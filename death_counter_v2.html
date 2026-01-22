@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silksong Death Counter</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #ff6b6b;
+            text-align: center;
+        }
+
+        #counter {
+            font-size: 8rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        button {
+            padding: 20px 40px;
+            font-size: 2rem;
+            background-color: #e73c3c;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        button:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .controls {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .small-btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #4a4a4a;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            #counter {
+                font-size: 6rem;
+            }
+
+            button {
+                padding: 15px 30px;
+                font-size: 1.5rem;
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>SILKSONG DEATHS</h1>
+    <div id="counter">0</div>
+    <button onclick="addDeath()">I DIED AGAIN</button>
+
+    <div class="controls">
+        <button class="small-btn" onclick="undo()">Undo</button>
+        <button class="small-btn" onclick="reset()">Reset</button>
+    </div>
+
+    <script>
+        // Load count from storage or start at 0
+        let count = parseInt(localStorage.getItem('silksong_deaths')) || 0;
+        const counterDisplay = document.getElementById('counter');
+
+        function updateDisplay() {
+            counterDisplay.textContent = count;
+            localStorage.setItem('silksong_deaths', count);
+        }
+
+        function addDeath() {
+            count++;
+            updateDisplay();
+        }
+
+        function undo() {
+            if (count > 0) {
+                count--;
+                updateDisplay();
+            }
+        }
+
+        function reset() {
+            if (confirm("Reset death count to zero?")) {
+                count = 0;
+                updateDisplay();
+            }
+        }
+
+        // Initialize
+        updateDisplay();
+    </script>
+</body>
+
+</html>
