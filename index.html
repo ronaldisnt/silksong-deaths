@@ -24,7 +24,21 @@
             margin-bottom: 1rem;
             animation: float 6s ease-in-out infinite;
         }
-        
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
         h1 {
             font-size: 2rem;
             margin-bottom: 2rem;
@@ -89,7 +103,7 @@
 </head>
 
 <body>
-    
+
     <img src="hornet.png" alt="Hornet" class="hornet-img">
     <h1>SILKSONG DEATHS</h1>
     <div id="counter">0</div>
