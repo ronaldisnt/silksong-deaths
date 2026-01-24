@@ -18,6 +18,13 @@
             margin: 0;
         }
 
+        .hornet-img {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 1rem;
+            animation: float 6s ease-in-out infinite;
+        }
+        
         h1 {
             font-size: 2rem;
             margin-bottom: 2rem;
@@ -82,7 +89,8 @@
 </head>
 
 <body>
-
+    
+    <img src="hornet.png" alt="Hornet" class="hornet-img">
     <h1>SILKSONG DEATHS</h1>
     <div id="counter">0</div>
     <button onclick="addDeath()">I DIED AGAIN</button>
